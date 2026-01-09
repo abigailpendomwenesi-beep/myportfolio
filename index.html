@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abigail Pendo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Times New Roman:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;         /* slate-900 */
+      --card: #111827;       /* gray-900 */
+      --text: #e5e7eb;       /* gray-200 */
+      --muted: #9ca3af;      /* gray-400 */
+      --accent: #38bdf8;     /* sky-400 */
+      --accent-2: #a78bfa;   /* violet-400 */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Times New Roman';
+      background: radial-gradient(1200px 600px at 10% 10%, rgba(245,230,200,0.6), transparent),
+                  radial-gradient(1000px 500px at 90% 20%, rgba(235,215,185,0.5), transparent),
+                  #f7efe5;
+      color: #4a4036;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ---------- NAV ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+      background: rgba(15,23,42,0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links a {
+      margin-left: 1.5rem;
+      color: var(--muted);
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      text-align: center;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 2rem;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      padding: 0.75rem 1.75rem;
+      border-radius: 999px;
+      margin: 0 0.5rem;
+      font-weight: 500;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #020617;
+      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(167,139,250,0.35);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      color: #020617;
+      box-shadow: 0 10px 30px rgba(56,189,248,0.25);
+    }
+
+    .btn-secondary:hover {
+      box-shadow: 0 15px 40px rgba(167,139,250,0.35);
+      transform: translateY(-3px);
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 5rem 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 1.5rem;
+    }
+    
+    .card {
+      color: #7a6f63;
+      font-family: 'Times New Roman';
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.25rem;
+      padding: 2rem;
+      transition: transform 0.3s ease, border 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(56,189,248,0.5);
+    }
+
+    .card h3 {
+      margin-bottom: 0.5rem;
+      color: #38bdf8;
+    }
+
+    .card p {
+      color: #7a6f63;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-links a { margin-left: 1rem; }
+    }
+    
+    .photo-card {
+      text-align: center;
+      padding: 1rem;
+      
+    }
+    .photo-card img {
+      width: 300px;        /* Adjust size */
+      height: 300px;border-radius: 10%;  /* Makes it circular */
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 3px solid var(--accent); /* Optional border */
+      box-shadow: 0 8px 20px rgba(56,189,248,0.3);
+      
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="nav-container">
+      <div class="logo">ABIGAIL PENDO</div>
+      <div class="nav-links">
+        <a href="#about">About Me</a>
+        <a href="#projects">Experiences</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-content">
+      <h1>Hi, I am <span class="gradient-text">Abigail Pendo</span></h1>
+      <p>
+        A Tech Enthusiast creating beautiful, modern, and meaningful digital experiences.
+      </p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn-primary">Get To Know Me</a>
+        <a href="#projects" class="btn-secondary">View My Experiences</a>
+      </div>
+      <div class="card photo-card">
+        <img src="images/myphoto1.png" alt="My Photo" width="300">
+      </div>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Who I Am</h3>
+        <p>
+           I am Abigail Pendo — a motivated and curious software developer in the making, passionate about building technology that makes a difference. I thrive at the intersection of logic and creativity, whether I'm coding a responsive web interface, designing a Python prototype, or explaining a math problem to a student. I am a lifelong learner, currently studying Computing at the University of Greenwich while actively applying my skills to real projects. 
+        </p>
+        <br>
+        <br>
+        <p>
+           I value collaboration and clarity, whether through peer code reviews, remote teamwork, or volunteering. Beyond code, I am community-minded — from tree planting to tutoring, I believe in using my skills to support and uplift others. I carry the discipline of a Gold Duke of Edinburgh Award recipient, the teamwork of a regional football champion, and the curiosity of an upcomingh poet into everything I do. 
+        </p>
+        <br>
+        <br>
+        <p>
+           I speak English and Swahili fluently, navigate French and Japanese conversationally, and enjoy connecting across cultures. I see myself not just as a developer, but as a problem-solver, a communicator, and a builder — ready to contribute, grow, and create meaningful impact.
+        </p>
+      </div>
+      <div class="card">
+        <h3>What I Do</h3>
+        <p>
+          I am a software developer and student building practical, real-world experience through academic projects and independent work. I design and develop web applications using Python, HTML, and CSS, and follow structured software engineering practices from planning to deployment. I enjoy turning ideas into working software and collaborating with others in Agile, remote-friendly environments. 
+        </p>
+        <br>
+        <br>
+        <p>
+          Moreover, I volunteer as a teaching assistant, helping primary school students improve in math and language, and support environmental conservation efforts in my community. Currently, I am deepening my knowledge by pursuing a Bachelor of Science in Computing at the University of Greenwich, while applying my skills to personal projects and looking for opportunities to grow. I build responsive websites, interactive interfaces, and user-centered designs.
+        </p>
+      </div>
+      <div class="card">
+        <h3>My Goals</h3>
+        <p>
+          <ul>
+            <li><b>Complete my Bachelor’s in Computing</b> – while maintaining a strong academic record and applying what I learn directly to personal or open-source projects.</li>
+            <br>
+            <li><b>Build a stronger portfolio</b> – by launching at least two more fully deployed web or mobile applications that solve real-world problems. Furthermore, I want to mentor others in tech whether through tutoring, writing technical guides, or volunteering with coding bootcamps for underserved communities.</li> 
+            <br>
+            <li><b>Become a well-rounded Tech Enthusiast</b> – with expertise in front-end and back-end development, AI/ML applications, cybersecurity, or ed-tech, capable of leading small projects or features from concept to deployment.</li> 
+            <br>
+            <li><b>Build a professional network</b> – of developers, educators, and innovators who inspire and challenge me.</li> 
+            <br>
+            <li><b>Continue volunteering</b> – regularly in education and environmental causes, integrating service into my lifestyle.</li>
+            <br>
+            <li><b>To continuously learn, grow, and create work that makes a positive impact.</b></li>
+          </ul>
+          To continuously learn, grow, and create work that makes a positive impact.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <h2 class="section-title">Experiences</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Part-Time Teacher</h3>
+        <p>
+          <ul>
+            <li>Improved learner comprehension by supporting 30+ pupils through structured lesson reinforcement and guided
+            academic exercises.</li>
+            <br>
+            <li>Strengthened mathematics and language performance by delivering simplified explanations aligned with curriculum objectives and individual learning pace.</li>
+            <br>
+            <li>Coordinated assignment support and feedback delivery using structured worksheets and verbal evaluations across multiple teaching sessions.</li>
+            <br>
+            <li>Monitored pupil progress and learning challenges, escalating concerns to lead teachers to support timely instructional adjustments.</li>
+            <br>
+            <li>Collaborated with teaching staff through digital communication tools to align weekly learning objectives and share pupil progress updates.</li>
+          </ul>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Volunteer</h3>
+        <p>
+          <ul>
+            <li><b>Tree Planting & Environmental Conservation</b>: Volunteered in Wabeni Polytechnic to plant and care for trees and soil.</li>
+            <br>
+            <li><b>Children's Home(s)</b>:Regular one-on-one time with a child or teen—playing games, reading, talking, or working on a project</li>
+            <br>
+            <li><b>Children's Home(s)</b>:Assist kitchen staff in preparing and serving nutritious meals (following all health and safety rules).</li>
+          </ul>
+        </p>
+      </div>
+      <div class="card">
+        <h3>Independent Software Projects</h3>
+        <p>
+          <ul>
+            <li>Designed and developed responsive web interfaces using Python, HTML, JS and CSS for both coursework and self-directed projects, ensuring usability across multiple device types.</li>
+            <br>
+            <li>I designed and implemented robust database schemas, establishing clear tables and relationships. I manipulated data by writing complex queries and performing updates to meet precise application requirements. I maintained systems through performance tuning, regular security updates, and reliable backup procedures.</li>
+            <br>
+            <li>Through these projects, I’ve delivered complete systems, followed structured software engineering practices, and managed the full lifecycle—from requirements to testing and documentation—often in self-directed environments.</li>
+          </ul>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Let's Work Together</h3>
+        <p>
+          Feel free to reach out for collaborations, opportunities, or just a friendly hello.
+        </p>
+        <p style="margin-top:1rem;">
+          <strong>Email:</strong> abigailpendomwenesi@gmail.com
+          <br>
+          <br>
+          <strong>Phone:</strong> +254 110 920 125
+          <br>
+          <br>
+          <strong>LinkedIn:</strong> https://www.linkedin.com/in/abigail-pendo-120a28297/ 
+          <br>
+          <br>
+          <strong>Location:</strong> Nairobi, Kenya
+          <br>
+          <br>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 ABIGAIL PENDO. All rights reserved.
+  </footer>
+
+</body>
+</html>
